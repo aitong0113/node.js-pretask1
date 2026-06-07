@@ -14,10 +14,10 @@
   "devDependencies": {
     "nodemon": "^3.1.14"
   },
-  "dependencies": {
-    "uuid": "^14.0.0"
-  },
   "engines": {
     "node": "14.x"
+  },
+  "dependencies": {
+    "uuid": "^8.3.2"
   }
 }
