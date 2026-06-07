@@ -4,6 +4,8 @@ const http = require('http');
 
 const { v4: uuidv4 } = require('uuid'); // 拿出 uuid 這個套件裡的 v4 方法，並且改名為 uuidv4
 const errorHandle = require('./errorhandle'); // 引入 errorHandle.js
+const successHandle = require('./successHandle'); // 引入 successHandle.js
+const headers = require('./headers'); // 引入 headers.js
 
 const todos = []; // 用來存放待辦事項的陣列
 
@@ -24,13 +26,7 @@ const requestListener = (req, res) => {
 
     // 根據用戶端送來的請求內容，回應不同的內容
     if(req.url === '/todos' && req.method === 'GET'){
-      // 回應首頁內容
-      res.writeHead(200, headers);
-      res.write(JSON.stringify({
-                "status": "success",
-                "data": todos,
-                }));
-      res.end();
+      successHandle(res, todos);
 
     }else if(req.url === '/todos' && req.method === 'POST'){
       req.on('end', () => {
@@ -43,12 +39,7 @@ const requestListener = (req, res) => {
             "id": uuidv4(),
           };
           todos.push(newTodo);
-          res.writeHead(200, headers);
-          res.write(JSON.stringify({
-              "status": "success",
-              "data": todos,
-              }));
-              res.end();
+          successHandle(res, todos);
           }else{
             errorHandle(res);
           }
@@ -61,12 +52,7 @@ const requestListener = (req, res) => {
 
     }else if(req.url === '/todos' && req.method === 'DELETE'){
       todos.length = 0; // 清空陣列
-      res.writeHead(200, headers);
-      res.write(JSON.stringify({
-                "status": "success",
-                "data": todos,
-                }));
-      res.end();
+      successHandle(res, todos);
 
     }else if(req.url.startsWith('/todos/') && req.method === 'DELETE'){
       const id = req.url.split('/').pop(); // 從 URL 中提取 ID
@@ -74,12 +60,7 @@ const requestListener = (req, res) => {
       if(index !== -1){
         todos.splice(index, 1); // 刪除對應 ID 的待辦事項
   
-      res.writeHead(200, headers);
-      res.write(JSON.stringify({
-        "status": "success",
-        "data": todos,
-      }));
-      res.end();
+        successHandle(res, todos);
 
     }else{
       errorHandle(res);
@@ -98,12 +79,7 @@ const requestListener = (req, res) => {
         if(index !== -1 && title !== undefined){
           todos[index].title = title; // 更新對應 ID 的待辦事項標題
 
-          res.writeHead(200, headers);
-          res.write(JSON.stringify({
-            "status": "success",
-            "data": todos,
-          }));
-          res.end();
+          successHandle(res, todos);
         }else{
           errorHandle(res);
         }
