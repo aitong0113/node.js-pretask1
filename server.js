@@ -134,5 +134,5 @@ const requestListener = (req, res) => {
 
 // 啟動 Server
 const server = http.createServer(requestListener);
-server.listen(3005);
+server.listen(process.env.PORT || 3005);
 
