@@ -1,0 +1,129 @@
+{
+  "info": {
+    "_postman_id": "d5d9a128-8829-442d-bd36-5d69607160a8",
+    "name": "todos本地端",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55489450",
+    "_collection_link": "https://go.postman.co/collection/55489450-d5d9a128-8829-442d-bd36-5d69607160a8?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "取得所有todos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3005/todos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3005",
+          "path": [
+            "todos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "新增單筆todos",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\" : \"postman訊息ㄅ１\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3005/todos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3005",
+          "path": [
+            "todos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "刪除所有todos",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    title = \"postman訊息\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3005/todos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3005",
+          "path": [
+            "todos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "刪除單筆todos",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    title = \"postman訊息\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3005/todos/bdb0b68c-2a7e-41b2-bdd5-d8f051002edb",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3005",
+          "path": [
+            "todos",
+            "bdb0b68c-2a7e-41b2-bdd5-d8f051002edb"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "編輯單筆todos",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    title = \"PATCH修改內容\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3005/todos/71d88138-9cc6-4d05-9d30-0262b75a9df8",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3005",
+          "path": [
+            "todos",
+            "71d88138-9cc6-4d05-9d30-0262b75a9df8"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
